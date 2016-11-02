@@ -1,0 +1,132 @@
+html { 
+    height: 100%; 
+} 
+body { 
+    margin: 0; 
+    min-height: 100%; 
+    display: flex; 
+    flex-flow: column nowrap; 
+	background-color: #000000; /*COLOUR ACCENT 1*/ 
+}
+#main {
+    width: 70%;
+    margin: auto;
+    background-color: #000000; /*background colour*/
+    overflow:hidden;
+    flex: 1;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #00ff00;
+    font-family: "Terminal", "Menlo", "Courier New", "American Typewriter", sans-serif;
+}
+#header {
+    width: 100%;
+    height: 50px;
+    background-color: #00FF00; /*COLOUR ACCENT 2*/
+    color: #000000;
+    padding-left: 5px;
+    font-family: "Terminal", "Menlo" "Courier New", "American Typewriter", sans-serif;
+}
+#logo {
+    float: left;
+    height: 100%;
+}
+#usertable {
+    float: right;
+    border: none;
+    margin-top: 5px;
+}
+#usertable tr th, #usertable tr td {
+    border: none;
+}
+#logintable {
+    margin: 50px auto auto;
+    border: none;
+}
+#logintable tr th, #logintable tr td {
+    border: none;
+}
+.editbutton {
+    height: 20px;
+}
+.addFileIcon, .addFolderIcon, .addProjectIcon, .deleteIcon {
+    height: 30px;
+}
+input.deletebutton{
+    background: #ccc url('icons/delete.ico') no-repeat top left;
+    background-size: 100% 100%;
+    height: 12px;
+    width: 12px;
+    background-color: rgba(255, 128, 0, 0);
+    border: none;
+}
+table.hidden, table.hidden tr td, table.hidden tr th, table.hidden tr, table.hidden tbody {
+    border: none;
+}
+table.structuretable, table.structuretable tr td, table.structuretable tr th, table.structuretable tr, table.structuretable tbody {
+    border: none;
+}
+
+#newTextSubmit{
+    background: #ccc url('icons/html.ico') no-repeat top left;
+    background-size: 100% 100%;
+    height: 30px;
+    width: 30px;
+    background-color: rgba(255, 128, 0, 0);
+    border: none;
+}
+h1 {
+    font-family: sans-serif;
+    font-weight: 500;
+    text-align:  center;
+    font-size: 50px;
+    color: #00ff00;
+}
+h2 {
+    font-family: sans-serif;
+    font-weight: 200;
+    font-size: 1.3em;
+	color: hsl(194, 71%, 50%);
+	margin-left: 2em;
+}
+h3{
+	font-family: sans-serif;
+	font-weight: 300;
+	font-size: 1.0em;
+}
+h4 {
+    color: #00ff00;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 3px;
+}
+h5 {
+    font-family: "Courier New", "American Typewriter", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: #080;
+    font-style: italic;
+}
+table, th, td {
+	border: 1px solid #00ff00;
+	border-collapse: collapse;
+}
+th, td {
+	padding: 5px;
+}
+a {
+    color: #4444ff;
+}
+.collapser {
+	color: #00ff00;
+	text-decoration: none;
+}
+.addfile, .addproject, .addfolder, .deletefolder, .addtext {
+    display: none;
+}
+.popper {
+    background-color: #000000;
+    border: 2px solid #00ff00; /*COLOUR ACCENT !*/
+    color: #00ff00;
+}
