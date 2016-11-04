@@ -69,6 +69,7 @@ session_start();
 			$sql = "UPDATE groups
 			SET ".$_POST['column']." = \"".$_POST['value']."\"
 			WHERE name = \"".$_POST["groupName"]."\";";
+			echo $sql;
 			$stmt = $conn->prepare($sql);
 			$stmt->execute(); 
 		}catch(PDOException $e){
@@ -150,11 +151,9 @@ session_start();
 	//echo the groups table including forms. so many forms.
 	echo "<table><tbody><tr><th>Name</th><th>Admins</th><th>Members</th><th>Remove?</th></tr>";
 	foreach($groups as $group){
-		echo"<tr><td><form action='admin.php' method='post'><input type='hidden' name='editGroups' value='True'><input type='hidden' name='column' value='name'><input type='text' name='value' value=\"".$group["name"]."\"><input type='hidden' name=
-		'groupName' value=\"".$group["name"]."\"><input type='submit' value='modify'></form>
-		</td><td><form action='admin.php' method='post'><input type='hidden' name='editGroups' value='True'><input type='hidden' name='column' value='admins'><input type='hidden' name='edit' value='True'><input type='hidden' name='column' value='name'><input type='text' name='value' value=\"".$group["admins"]."\"><input type='hidden' name='groupName' value=\"".$group["name"]."\"><input type='submit' value='modify'></form>
-		</td><td><form action='admin.php' method='post'><input type='hidden' name='editGroups' value='True'><input type='hidden' name='column' value='members'><input type='text' name='value' value=\"".$group["members"]."\"><input type='hidden' name=
-		'groupName' value=\"".$group["name"]."\"><input type='submit' value='modify'></form></td>
+		echo"<tr><td>".$group["name"]."
+		</td><td><form action='admin.php' method='post'><input type='hidden' name='editGroups' value='True'><input type='hidden' name='column' value='admins'><input type='hidden' name='edit' value='True'><input type='text' name='value' value=\"".$group["admins"]."\"><input type='hidden' name='groupName' value=\"".$group["name"]."\"><input type='submit' value='modify'></form>
+		</td><td><form action='admin.php' method='post'><input type='hidden' name='editGroups' value='True'><input type='hidden' name='column' value='members'><input type='text' name='value' value=\"".$group["members"]."\"><input type='hidden' name='groupName' value=\"".$group["name"]."\"><input type='submit' value='modify'></form></td>
 		<td><form action='admin.php' method='post'><input type='hidden' name='removeGroup' value='True'><input type='hidden' name='groupName' value='".$group["name"]."'><input type='submit' value='remove'></form></tr>";
 	}
 	echo "</tbody></table>";
