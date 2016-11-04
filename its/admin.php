@@ -69,7 +69,6 @@ session_start();
 			$sql = "UPDATE groups
 			SET ".$_POST['column']." = \"".$_POST['value']."\"
 			WHERE name = \"".$_POST["groupName"]."\";";
-			echo $sql;
 			$stmt = $conn->prepare($sql);
 			$stmt->execute(); 
 		}catch(PDOException $e){
