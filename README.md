@@ -19,11 +19,13 @@ There is no need to make new accounts on It's Working; it simply uses your exist
 
 1. Copy the content of the repository's "its" directory into the desired web location on your server
 
-2. Configure setup.ini (more information below)
+2. Make a new SQL database and a new account that has full access to this database for It's Working to store data
 
-3. Run setup.php by going to http://<your website>/<directory>/setup.php
+3. Configure setup.ini (more information below)
 
-4. Make sure to prevent unauthorised users from accessing setup.ini, as this file has your SQL account information and password
+4. Run setup.php by going to http://<your website>/<directory>/setup.php
+
+5. Make sure to prevent unauthorised users from accessing setup.ini, as this file has your SQL account information and password
 
 ###Configuring setup.ini
 
