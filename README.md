@@ -1,12 +1,11 @@
 # It's Working
 It's Working is an open source educational environment where teachers can upload files and students can download them. 
-Currently in alpha, public beta will begin soon.
-
+We are currently in public beta, and we are testing with a closed testing group in The Netherlands.
 ##Features
 
-It's Working is based around groups. A teacher should be assigned one group for each class he/she teaches. This group will show up in both the teachers main page as that of the students. 
+It's Working is based around groups. A teacher should be assigned one group for each class he/she teaches. Both students and teacher can then view this group from the main page. The main page shows the groups in a collapsing directory structure, not unlike file browsers everyone is familiar with.
 
-The teacher can then upload files make folders, and delete the files again in this group, not unlike a common directory structure. There is no limit to the amount and levels of folders that can be made (other than the physical storage space). Teachers can also make rich text files directly from the browser using markdown.
+The teacher can then upload files, make folders, and delete the files again in this group, also like a common directory structure. There is no limit to the amount and levels of folders that can be made (other than the physical storage space). Teachers can also make rich text files, formatted in html, directly from the browser using markdown.
 
 Teachers can also make projects, where students submit files and teachers can view and grade these files. If they have set a deadline, the submission time will show green – provided the file was submitted in time. If it was not, the submission time will be red instead. 
 
@@ -20,7 +19,7 @@ There is no need to make new accounts on It's Working; it simply uses your exist
 
 2. Configure setup.ini (more information below)
 
-3. Run setup.php
+3. Run setup.php by going to http://<your website>/<directory>/setup.php
 
 4. Make sure to prevent unauthorised users from accessing setup.ini, as this file has your SQL account information and password
 
@@ -30,7 +29,7 @@ There is no need to make new accounts on It's Working; it simply uses your exist
 
 It's Working does not have an internal account database. Instead, it uses the database that the school already has. It supports all SQL databases (although I only tested MySQL). If you store your passwords in anything that is not an SQL database, such as Active Directory, please consider making a fork or opening an issue.
 
-First you need to configure your own database. This is done is setup.ini.
+First you need to configure It's Working to access your own account database. This is done is setup.ini.
 
 It's Working has three account types: Students, Teachers, and Admins. There are two different ways to distinguish between these accounts in the database. 
 
@@ -48,13 +47,13 @@ It's Working supports all three ways
 
 - If you use a separate column in one table, fill in identical information for all three databases, but fill in the condition. This will distinguish between the three different account types. The condition must be a valid SQL condition, without where. For example, if you have a separate "type" column where students are identified with "student", simply set $ext1_condition to "type = student". This will accept any valid SQL condition, so if there are multiple qualifying columns operators such as AND and OR are also accepted.
 
-Note that anyone found in database 1 will be a student, anyone found in database 2 will be a teacher, and anyone found in database 3 will be an admin. If anyone is found in multiple databases.
+Each database also has an option to configure what account type is stored in what database. If anyone is found in multiple databases, their account type will be set to that of the first database they will be found in.
 
 Also note the setting for $ext1_write. This setting will let It's Working know if it has write access to the database. This variable currently has no consequences, but in future updates, might allow users to change their passwords via It's Working if enabled.
 
 ####The internal database
 
-Apart from the external account database there is also an internal database. This is the database in which It's Working stores the information that it needs to work. It is reccommended that you give It's Working its own database with it's own account, for security reasons. This account then needs full access on said database.
+Apart from the external account database there is also an internal database. This is the database in which It's Working stores the information that it needs to work. It is reccommended that you give It's Working its own database with it's own account, for security reasons. This account then needs full access on said database. Note that while all SQL programs should work, only mySQL has been tested. While the account databases only need some simple commands, the chance of something going wrong is higher on the internal database.
 
 ####Debug mode
 
