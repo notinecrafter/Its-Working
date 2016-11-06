@@ -15,6 +15,8 @@ There is no need to make new accounts on It's Working; it simply uses your exist
 
 ##Installation Instructions
 
+0. Install php and any SQL version (preferably mySQL)
+
 1. Copy the content of the repository's "its" directory into the desired web location on your server
 
 2. Configure setup.ini (more information below)
