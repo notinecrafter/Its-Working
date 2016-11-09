@@ -1,40 +1,72 @@
 <?php
 session_start();
+
+//evaluate setup.ini
+$file = fopen("setup.ini", 'r');
+$setup = fread($file, filesize('setup.ini'));
+eval($setup);
+fclose($file);
+
+error_reporting(-$debug);
+
+//connect to internal db
+	try{
+		$conn = new PDO("$server_type:host=$db_server;dbname=$db_name", $db_user, $db_password);
+		if($debug){
+			echo "<p>connected to internal database</p>";
+			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+		}
+	}catch(PDOException $e){
+		if($debug){
+			echo "<br/>connection failed: ".$e->getMessage();
+		}
+	}
+
+//read the prefences
+$sql = "SELECT preferences FROM users where id = '".$_SESSION["user"]."'";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$prefs = $stmt->fetchAll();
+foreach($prefs as $pref){
+	$preferences = $pref["preferences"];
+}
+eval("\$preferences = array(".$preferences.");");
+if(!isset($preferences["style"])){
+	//set the style so it doesn't crash everything if undefined
+	$preferences["style"] = "light";
+}
+if(!isset($preferences["dispname"])){
+	$preferences["dispname"] = $_SESSION["user"];
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>It's Working build <?php echo date("o")."W".date("W");?></title>
-	<style>
-		table, th, td {
-    		border: 1px solid black;
-    		border-collapse: collapse;
-		}
-		th, td {
-    		padding: 5px;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="<?php echo $preferences["style"];?>.css">
 </head>
-<body>
+<body onresize='resize()'>
+	<div id='header'>
+		<img id='logo' src='logo-<?php echo $preferences["style"]; ?>.png'/>
+		<table id='usertable'><tbody><tr>
+	<?php
+	//echo login info
+	if($_SESSION["user"] == ""){
+		echo "<script type='text/javascript'>window.location.replace('login.php')</script>"; //not the nicest way, but should work.
+	}else{
+		echo "<td>".$_SESSION["user"]."</td>";
+		echo "<td><form action='logout.php' method='post'><input type='submit' value='log out'></form></td>";
+	}
+	?>
+		</tr></tbody></table>
+	</div>
+	<div id='main'>
 	<?php
 	if($_SESSION["type"] != 2){
 	 	exit("you are not an admin");
 	}
 
 	//TODO: security
-	//evaluate setup.ini
-		$file = fopen("setup.ini", 'r');
-		$setup = fread($file, filesize('setup.ini'));
-		eval($setup);
-		fclose($file);
-
-	//connect to internal db
-	try{
-		$conn = new PDO("$server_type:host=$db_server;dbname=$db_name", $db_user, $db_password);
-		echo "<p>connected to internal database</p>"; //TODO: should only echo in debug mode
-	}catch(PDOException $e){
-		echo "<br/>connection failed: ".$e->getMessage(); //TODO: should only echo in debug mode
-	}
 
 	//connect to external db's for password changes
 	//connect to external db 1
@@ -221,5 +253,21 @@ session_start();
 	echo "</tbody></table>";
 
 	?>
+	</div>
+	<div style='width: 100%' id='test'><!--this element is only here for the responsive page width thing to get the page width--></div>
 </body>
+<script type="text/javascript">
+	if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
+		document.getElementById("main").style.width = "875px";
+	}else{
+		document.getElementById("main").style.width = "70%";
+	}
+	function resize(){
+		if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
+			document.getElementById("main").style.width = "875px";
+		}else{
+			document.getElementById("main").style.width = "70%";
+		}
+	}
+</script>
 </html>

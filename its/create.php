@@ -36,8 +36,6 @@ if(!isset($preferences["style"])){
 	<link rel="stylesheet" type="text/css" href="<?php echo $preferences["style"]; ?>.css">
 </head>
 <body onresize='resize()'>
-	<?php
-	//exiting php for markup?>
 	<div id='header'>
 		<img id='logo' src='logo-<?php echo $preferences["style"]; ?>.png'/>
 		<table id='usertable'><tbody><tr>
@@ -124,6 +122,7 @@ if(!isset($preferences["style"])){
 			</tbody>
 		</table>
 	</p>
+	</div>
 	<div style='width: 100%' id='test'><!--this element is only here for the responsive page width thing to get the page width--></div>
 </body>
 <script type="text/javascript">
