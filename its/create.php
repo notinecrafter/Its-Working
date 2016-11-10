@@ -82,7 +82,7 @@ if(!isset($preferences["style"])){
 		$file = fopen("files/".$_POST["group"]."/".$_POST["location"].$_POST["title"].".html", "w");
 		fwrite($file, "<h1>".htmlspecialchars($_POST["title"])."</h1>");
 		$ParseDown = new Parsedown();
-		fwrite($file, $ParseDown->text(htmlspecialchars($_POST["text"])));
+		fwrite($file, $ParseDown->text($_POST["text"]));
 		fclose($file);
 		echo "The file ".$_POST["title"]." has been created.";
 		try{
