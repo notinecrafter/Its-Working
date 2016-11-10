@@ -222,7 +222,7 @@ if(!isset($preferences["dispname"])){
 										}
 										$ownership = implode(", ", $ownership);
 										//check if it was submitted in time
-										if(isset($file["properties"])){
+										if(isset($properties["deadline"])){
 											if(convert_datetime($submission["time"]) > convert_datetime($properties["deadline"])){
 												$timecolor = "#ff0000";
 											}else{
