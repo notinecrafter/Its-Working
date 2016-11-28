@@ -60,7 +60,7 @@
 		
 		try{
 			$conn->exec($sql1);
-			echo "succesfully created user database<br/>";
+			echo "succesfully created internal user database<br/>";
 		}catch(PDOException $e){
 			echo "error creatin user database: ".$e->getMessage()."<br/>";
 			//somehow doesn't report already existing database. Isn't really broken, ain't gonna fix it.
@@ -102,6 +102,18 @@
 		add($ext2_user_table, $ext2_conn, $ext2_id_name, $ext2_user_type, $ext2_condition);
 		echo "adding external table 3:<br/>";
 		add($ext3_user_table, $ext3_conn, $ext3_id_name, $ext3_user_type, $ext3_condition);
+
+		$sql = "CREATE TABLE groups(
+			members VARCHAR(9000),
+			admins VARCHAR(9000),
+			name VARCHAR(30) PRIMARY KEY
+			";
+		try{
+			$conn->exec($sql);
+			echo "succesfully created groups database";
+		}catch(PDOException $e){
+			echo "error creatin group database: ".$e->getMessage()."<br/>";
+		}
 	?>
 </body>
 </html>

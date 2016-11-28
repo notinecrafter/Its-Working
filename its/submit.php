@@ -26,9 +26,11 @@ session_start();
 
 	//some code to work with the additional member thing
 	$members = array("'".$_SESSION["user"]."'");
-	foreach($_POST["members"] as $member){
-		$members[] = "'$member'";
-	}
+        if(isset($_POST["members"]){
+	        foreach($_POST["members"] as $member){
+		        $members[] = "'$member'";
+	        }
+        }
 	$members = implode(",", $members);
 
 	//verification
