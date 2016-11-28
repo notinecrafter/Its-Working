@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -327,7 +326,9 @@ if(!isset($preferences["dispname"])){
 				$folder["location"] = str_replace($prefix, "", $file["location"]);
 			}
 			foreach($files as $file){
-				if(explode("/", $file["location"])[1] == $folder["filename"]){
+				//explode(...)[1] causes compatibility issues somehow
+				$test = explode("/", $file["location"]);
+				if($test[1] == $folder["filename"]){
 					$file["location"] = str_replace("/".$folder["filename"], "", $file["location"]);
 					$folderfiles[] = $file;
 				}
@@ -344,7 +345,8 @@ if(!isset($preferences["dispname"])){
 				echo "<div class='addfile'><form action='upload.php' method='post' enctype='multipart/form-data'>add file? <input type='file' name='fileToUpload' id='fileToUpload'><input type='hidden' name='group' value='".$group["name"]."'><input type='hidden' name='location' value='".$prefix."/".$folder["filename"]."/'><input type='submit' value='upload'></form></div>";
 				echo "<div class='addproject'><form action='project.php' method='post' enctype='multipart/form-data'>add project? name: <input type='text' name='name' placeholder='name'> deadline";
 				if(isfirefox()){echo ' (YYYY-MM-DD HH:MM:SS)';}
-				echo ":<input type='datetime-local' name='deadline' min='".explode("+", date("c"))[0]."'> <input type='hidden' name='group' value='".$group["name"]."'><input type='hidden' name='location' value='".$prefix."/".$folder["filename"]."/'><input type='submit' value='create'></form></div>";
+				$date = explode("+", date("c"));
+				echo ":<input type='datetime-local' name='deadline' min='".$date[0]."'> <input type='hidden' name='group' value='".$group["name"]."'><input type='hidden' name='location' value='".$prefix."/".$folder["filename"]."/'><input type='submit' value='create'></form></div>";
 				echo "<div class='addfolder'><form action='folder.php' method='post' enctype='multipart/form-data'>add folder? <input type='hidden' name='action' value='add'><input type='text' name='name' placeholder='name'><input type='hidden' name='group' value='".$group["name"]."'><input type='hidden' name='location' value='".$prefix."/".$folder["filename"]."/'><input type='submit' value='create'></form></div>";
 				echo "<div class='deletefolder'><form action='rmdir.php' method='post' enctype='multipart/form-data'><input type='hidden' name='action' value='remove'><input type='hidden' name='name' value='".$folder["filename"]."'><input type='hidden' name='group' value='".$group["name"]."'><input type='hidden' name='location' value='".$prefix."/'><input type='submit' value='delete folder'></form></div>";
 				echo "<div class='addtext'><form action='create.php' method='post' enctype='multipart/form-data'><input type='hidden' name='location' value='".$prefix."/".$folder["filename"]."/'><input type='hidden' name='group' value='".$group["name"]."'><input type='hidden' name='create' value='false'><input type='submit' value='new text'></form></div>";
