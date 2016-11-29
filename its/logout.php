@@ -21,9 +21,6 @@ session_start();
 <!DOCTYPE html>
 <html>
 <body>
-	<?php
-	//redirect to login.php
-	echo "<script>location.replace('/login.php')</script>";
-	?>
+	<script>location.replace('/login.php')</script>
 </body>
 </html>
