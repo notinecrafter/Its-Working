@@ -107,9 +107,10 @@
 			members VARCHAR(9000),
 			admins VARCHAR(9000),
 			name VARCHAR(30) PRIMARY KEY
-			";
+			);";
 		try{
-			$conn->exec($sql);
+			$stmt = $conn->prepare($sql);
+			$stmt->execute();
 			echo "succesfully created groups database";
 		}catch(PDOException $e){
 			echo "error creatin group database: ".$e->getMessage()."<br/>";
