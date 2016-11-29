@@ -110,7 +110,7 @@ if($debug){
             foreach($stmt1->fetchAll() as $row){
                 //if there are no matches, none of this code will be executed
                 if($row[$ext1_id_name] == $user){
-                    if($row[$ext1_password_name] == md5($password)){ //TODO: replace the md5 with something that will use the function specified in setup.ini
+                    if($row[$ext1_password_name] == hash($ext1_hash_method, $password)){
                         $_SESSION["user"] = $row[$ext1_id_name];
                         $_SESSION["type"] = $ext1_user_type;
                         echo "<script type='text/javascript'>window.location.replace('index.php')</script>"; //not the nicest way, but should work.
@@ -133,7 +133,7 @@ if($debug){
             foreach($stmt2->fetchAll() as $row){
                 //if there are no matches, none of this code will be executed
                 if($row[$ext2_id_name] == $user){
-                    if($row[$ext2_password_name] == md5($password)){ //TODO: replace the md5 with something that will use the function specified in setup.ini
+                    if($row[$ext2_password_name] == hash($ext2_hash_method, $password)){
                         $_SESSION["user"] = $row[$ext2_id_name];
                         $_SESSION["type"] = $ext2_user_type;
                         echo "<script type='text/javascript'>window.location.replace('index.php')</script>"; //not the nicest way, but should work.
@@ -156,7 +156,7 @@ if($debug){
             foreach($stmt3->fetchAll() as $row){
                 //if there are no matches, none of this code will be executed
                 if($row[$ext3_id_name] == $user){
-                    if($row[$ext2_password_name] == md5($password)){ //TODO: replace the md5 with something that will use the function specified in setup.ini
+                    if($row[$ext2_password_name] == hash($ext3_hash_method, $password)){
                         $_SESSION["user"] = $row[$ext2_id_name];
                         $_SESSION["type"] = $ext3_user_type;
                         echo "<script type='text/javascript'>window.location.replace('index.php')</script>"; //not the nicest way, but should work.
