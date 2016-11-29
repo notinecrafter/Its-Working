@@ -1,11 +1,6 @@
 <?php
 session_start();
-?>
-<!DOCTYPE html>
-<html>
-<body>
-	<?php
-	//session destroy code shamelessly copied from php.net
+//session destroy code shamelessly copied from php.net
 	// Unset all of the session variables.
 	$_SESSION = array();
 
@@ -22,8 +17,13 @@ session_start();
 	// Finally, destroy the session.
 	session_destroy();
 
+?>
+<!DOCTYPE html>
+<html>
+<body>
+	<?php
 	//redirect to login.php
-	Header( "Location: login.php");
+	echo "<script>location.replace('/login.php')</script>";
 	?>
 </body>
 </html>
