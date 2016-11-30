@@ -137,6 +137,13 @@ th, td {
     #header {
         height: 50px;
     }
+    .nobreakmobile {
+        height: 0px;
+    }
+    #loginform {
+        text-align: center;
+        display: block;
+    }
 }
 @media screen and (max-device-width: 600px) {
     #main {
@@ -177,5 +184,8 @@ th, td {
     }
     #loginform{
         text-align: center;
+    }
+    .nobreakmobile{
+        height: 0px;
     }
 }

@@ -13,14 +13,14 @@ if($debug){
 <html>
 <head>
     <title>It's Working build <?php echo date("o")."W".date("W");?></title>
-    <link rel="stylesheet" type="text/css" href="light.css">
+    <link rel="stylesheet" type="text/css" href="light.css"/>
 </head>
 <body onresize="resize()">
 <div id='header'><img id='logo' src='logo-light.png'/></div>
 <div id='main'>
 	<form action='login.php' method='post' id='loginform'>
-        Name:<input type="text" name="name"/>
-        Password:<input type='password' name='password'/>
+        Name:<input type="text" name="name"/><div class='nobreakmobile'><br/></div>
+        Password:<input type='password' name='password'/><div class='nobreakmobile'><br/></div>
         <input type='submit' value='login'/>
 	</form>
 	<?php
