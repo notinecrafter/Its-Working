@@ -43,26 +43,26 @@ if(!isset($preferences["dispname"])){
 	<title>It's Working build <?php echo date("o")."W".date("W");?></title>
 	<link rel="stylesheet" type="text/css" href="<?php echo $preferences["style"];?>.css">
 </head>
-<body onresize='resize()'>
+<body>
 	<?php
 	
 	//exiting php for markup?>
 	<div id='header'>
 		<img id='logo' src='logo-<?php echo $preferences["style"]; ?>.png'/>
-		<table id='usertable'><tbody><tr>
-			<td>
-				<button id='settings'>settings</button>
-			</td>
+		<div id='headright'>
+			<table class='structuretable'><tbody><tr>
+				<td><button id='settings'>settings</button></td>
 	<?php
 	//echo login info
 	if($_SESSION["user"] == ""){
 		echo "<script type='text/javascript'>window.location.replace('login.php')</script>"; //not the nicest way, but should work.
 	}else{
-		echo "<td>".$preferences["dispname"]."</td>";
-		echo "<td><form action='logout.php' method='post'><input type='submit' value='log out'></form></td>";
+		echo "<td><span id='username'>".$preferences["dispname"]."</span></td>";
+		echo "<td><form action='logout.php' method='post' id='logoutform'><input type='submit' value='log out'></form></td>";
 	}
 	?>
 		</tr></tbody></table>
+		</div>
 	</div>
 	<?php
 
@@ -442,18 +442,18 @@ if(!isset($preferences["dispname"])){
 	crossorigin="anonymous"></script>
 	<script src='js.cookie.js'></script>
 	<script type='text/javascript'>
-	if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
-			document.getElementById("main").style.width = "875px";
-		}else{
-			document.getElementById("main").style.width = "70%";
-		}
-	function resize(){
-		if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
-			document.getElementById("main").style.width = "875px";
-		}else{
-			document.getElementById("main").style.width = "70%";
-		}
-	}
+	// if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
+	// 		document.getElementById("main").style.width = "875px";
+	// 	}else{
+	// 		document.getElementById("main").style.width = "70%";
+	// 	}
+	// function resize(){
+	// 	if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
+	// 		document.getElementById("main").style.width = "875px";
+	// 	}else{
+	// 		document.getElementById("main").style.width = "70%";
+	// 	}
+	// }
 
 	function main(){
 		//hide all lists once the page is loaded

@@ -24,13 +24,12 @@ body {
     float: left;
     height: 100%;
 }
-#usertable {
+#headright {
     float: right;
-    border: none;
-    margin-top: 5px;
-}
-#usertable tr th, #usertable tr td {
-    border: none;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 30px;
+    vertical-align: center;
 }
 #logintable {
     margin: 50px auto auto;
@@ -130,10 +129,6 @@ th, td {
         padding-right: 5%;
        
     }
-    p {
-        font-size: 15px;
-        line-height: 22;
-    }
     #header {
         height: 50px;
     }
@@ -166,7 +161,7 @@ th, td {
         font-size: 1em;
         border: 1px solid #bbb;
     }
-    input[type=submit] {
+    #loginform input[type=submit] {
         -webkit-appearance: none; -moz-appearance: none;
         display: block;
         margin: 1.5em 0;
@@ -178,6 +173,21 @@ th, td {
         background: #fdfdfd; background: -moz-linear-gradient(top, #fdfdfd 0%, #bebebe 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(100%,#bebebe)); background: -webkit-linear-gradient(top, #fdfdfd 0%,#bebebe 100%); background: -o-linear-gradient(top, #fdfdfd 0%,#bebebe 100%); background: -ms-linear-gradient(top, #fdfdfd 0%,#bebebe 100%); background: linear-gradient(to bottom, #fdfdfd 0%,#bebebe 100%);
         border: 1px solid #bbb;
         -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;
+    }
+    #headright input[type=submit] {
+        -webkit-appearance: none; -moz-appearance: none;
+        display: block;
+        font-size: 10px;
+        line-height: 2px;
+        color: #333;
+        font-weight: bold;
+        height: 30px;
+        background: #fdfdfd; background: -moz-linear-gradient(top, #fdfdfd 0%, #bebebe 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(100%,#bebebe)); background: -webkit-linear-gradient(top, #fdfdfd 0%,#bebebe 100%); background: -o-linear-gradient(top, #fdfdfd 0%,#bebebe 100%); background: -ms-linear-gradient(top, #fdfdfd 0%,#bebebe 100%); background: linear-gradient(to bottom, #fdfdfd 0%,#bebebe 100%);
+        border: 1px solid #bbb;
+        -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;
+    }
+    #headright {
+        font-size: 1px;
     }
     #header {
         height: 150px;
