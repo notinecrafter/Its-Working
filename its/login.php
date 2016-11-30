@@ -18,12 +18,10 @@ if($debug){
 <body onresize="resize()">
 <div id='header'><img id='logo' src='logo-light.png'/></div>
 <div id='main'>
-	<form action='login.php' method='post'>
-        <table id='logintable'><tbody>
-            <tr><td>Name:</td><td><input type="text" name="name"/></td></tr>
-            <tr><td>Password:</td><td><input type='password' name='password'/></td></tr>
-            <tr><td><input type='submit' value='login'/></td></tr>
-        </tbody></table>
+	<form action='login.php' method='post' id='loginform'>
+        Name:<input type="text" name="name"/>
+        Password:<input type='password' name='password'/>
+        <input type='submit' value='login'/>
 	</form>
 	<?php
     error_reporting(-$debug);
@@ -178,18 +176,18 @@ if($debug){
 </div>
 <div style='width: 100%' id='test'><!--this element is only here for the responsive page width thing to get the page width--></div>
 <script type='text/javascript'>
-if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
-    document.getElementById("main").style.width = "875px";
-}else{
-    document.getElementById("main").style.width = "70%";
-}
-function resize(){
-    if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
-        document.getElementById("main").style.width = "875px";
-    }else{
-        document.getElementById("main").style.width = "70%";
-    }
-}
+// if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
+//     document.getElementById("main").style.width = "875px";
+// }else{
+//     document.getElementById("main").style.width = "70%";
+// }
+// function resize(){
+//     if(parseInt(document.getElementById("test").offsetWidth) >= 1250){
+//         document.getElementById("main").style.width = "875px";
+//     }else{
+//         document.getElementById("main").style.width = "70%";
+//     }
+// }
 </script>
 </body>
 </html>
