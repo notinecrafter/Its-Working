@@ -44,9 +44,6 @@ if(!isset($preferences["dispname"])){
 	<link rel="stylesheet" type="text/css" href="<?php echo $preferences["style"];?>.css">
 </head>
 <body>
-	<?php
-	
-	//exiting php for markup?>
 	<div id='header'>
 		<img id='logo' src='logo-<?php echo $preferences["style"]; ?>.png'/>
 		<div id='headright'>
@@ -435,6 +432,7 @@ if(!isset($preferences["dispname"])){
 	}
 	?>
 	</div>
+
 	<div style='width: 100%' id='test'><!--this element is only here for the responsive page width thing to get the page width--></div>
 	<script
 	src="https://code.jquery.com/jquery-3.1.0.min.js"
@@ -545,7 +543,7 @@ if(!isset($preferences["dispname"])){
 	</script>
 	<script src="popper.js"></script>
 	<script type="text/javascript">
-	var content = "<div style='padding: 5px;'><h4 style='text-align: center;'>Settings</h4> <p>Style</p> <form action='settings.php' method='post'> <input type='radio' name='style' value='light' <?php if($preferences["style"]=='light'){ echo "checked"; } ?>>Light<br/> <input type='radio' name='style' value='dark' <?php if($preferences["style"]=='dark'){ echo "checked"; } ?>>Dark<br/> <!--<input type='radio' name='style' value='1337'><br/>1337--> Display Name:</br><input type='text' ' name='dispname' value='<?php echo $preferences["dispname"]; ?>'><br/><input type='submit' value='Submit'> </form> </div>"
+	var content = "<div style='padding: 5px;'><h4 style='text-align: center;'>Settings</h4> <p>Style</p> <form action='settings.php' method='post'> <input type='radio' name='style' value='light' <?php if($preferences["style"]=='light'){ echo "checked"; } ?>>Light<br/> <input type='radio' name='style' value='dark' <?php if($preferences["style"]=='dark'){ echo "checked"; } ?>>Dark<br/> <span style='display: none'><input type='radio' name='style' value='1337'>1337<br/></span> Display Name:</br><input type='text' ' name='dispname' value='<?php echo $preferences["dispname"]; ?>'><br/><input type='submit' value='Submit'> </form> </div>"
 	var reference = document.querySelector('#settings');
 	popperActive = false
 	$('#settings').click(function(){

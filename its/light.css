@@ -28,7 +28,6 @@ body {
     float: right;
     overflow: hidden;
     white-space: nowrap;
-    height: 30px;
     vertical-align: center;
 }
 #logintable {
@@ -139,10 +138,15 @@ th, td {
         text-align: center;
         display: block;
     }
+    #headright{
+        height: 30px;
+    }
 }
 @media screen and (max-device-width: 600px) {
     #main {
-        width: 100%;
+        width: 100%; 
+        left: 0;
+        z-index: 1;
     }
     body {
         font-size: 5em;
@@ -174,20 +178,18 @@ th, td {
         border: 1px solid #bbb;
         -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;
     }
-    #headright input[type=submit] {
+    #logoutform input[type=submit] {
         -webkit-appearance: none; -moz-appearance: none;
         display: block;
-        font-size: 10px;
-        line-height: 2px;
+        font-size: 50px;
+        line-height: 120px;
         color: #333;
         font-weight: bold;
-        height: 30px;
+        height: 120px;
         background: #fdfdfd; background: -moz-linear-gradient(top, #fdfdfd 0%, #bebebe 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(100%,#bebebe)); background: -webkit-linear-gradient(top, #fdfdfd 0%,#bebebe 100%); background: -o-linear-gradient(top, #fdfdfd 0%,#bebebe 100%); background: -ms-linear-gradient(top, #fdfdfd 0%,#bebebe 100%); background: linear-gradient(to bottom, #fdfdfd 0%,#bebebe 100%);
         border: 1px solid #bbb;
         -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;
-    }
-    #headright {
-        font-size: 1px;
+        margin-top: 10px;
     }
     #header {
         height: 150px;
@@ -197,5 +199,8 @@ th, td {
     }
     .nobreakmobile{
         height: 0px;
+    }
+    #settings, #username {
+        display: none;
     }
 }
