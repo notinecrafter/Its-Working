@@ -21,6 +21,6 @@ session_start();
 <!DOCTYPE html>
 <html>
 <body>
-	<script>location.replace('/login.php')</script>
+	<script>location.replace('login.php')</script>
 </body>
 </html>
